@@ -1,0 +1,740 @@
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  /*========== Ukuran Header ==========*/
+  --header-height: 3.5rem; /* Tinggi header */
+  --nav-width: auto; /* Lebar navbar */
+
+  /*========== Warna ==========*/
+  --warna-utama: #00ff99; /* Warna utama */
+  --text-color: #ffffff; /* Warna teks*/
+  --text-color-light: #a5a1aa; /* Warna teks yang lebih terang */
+  --body-color: #f9f6fd; /* Warna latar belakang */
+
+  /*========== Font dan Tipografi ==========*/
+  --body-font: 'Poppins', sans-serif; /* Jenis font untuk body */
+  --normal-font-size: 1rem; /* Ukuran font normal */
+  --small-font-size: 0.875rem; /* Ukuran font kecil */
+  --smaller-font-size: 0.75rem; /* Ukuran font lebih kecil */
+
+  /*========== Berat Font ==========*/
+  --font-medium: 500; /* Berat font medium */
+  --font-semi-bold: 600; /* Berat font semi-bold */
+
+  /*========== Z-index ==========*/
+  --z-fixed: 100; /* Z-index untuk elemen tetap */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+p {
+  font-family: var(--body-font);
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+.home-desc {
+  color: #999;
+  font-size: 18px;
+}
+
+h1 {
+  font-family: var(--body-font);
+  color: var(--text-color);
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.side {
+  color: var(--text-color-light);
+  max-width: 50%;
+  width: 350px;
+  margin: 10px;
+  border-radius: 30px;
+  border: 1px solid white;
+  position: fixed;
+  z-index: 1000;
+}
+
+.aside {
+  padding: 40px 0px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.aside-content {
+  display: flex;
+  align-items: center;
+  text-align: end;
+  margin-bottom: 30px;
+}
+
+.aside-content h1,
+.aside-content p {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.aside img {
+  width: 200px; /* Mengatur lebar gambar menjadi 300px */
+  height: 200px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.aside p:nth-of-type(2) {
+  font-size: 22px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.contact-list {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.contact-list a {
+  text-decoration: none;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0; /* penting: jangan pakai padding */
+  border: 1px solid #888;
+  border-radius: 50%;
+  color: #888;
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    border 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.contact-list a:hover {
+  color: #00ff99;
+  border: 1px solid #00ff99;
+}
+
+.contact-list a:hover,
+.contact-list a:focus,
+.contact-list a:visited {
+  text-decoration: none; /* pastikan tetap hilang di semua state */
+}
+
+header .aside button {
+  background-color: var(--warna-utama);
+  border: none;
+  border-radius: 50px;
+  padding: 19px 55px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease;
+}
+
+header .aside button a {
+  text-decoration: none;
+  color: black; /* Warna teks default */
+  transition: color 0.3s ease; /* Menambahkan transisi pada warna teks */
+}
+
+header .aside button:hover {
+  background-color: #000000; /* Mengubah warna latar belakang saat hover */
+  outline: 2px solid white;
+  outline-offset: -2px;
+}
+
+header .aside button:hover a {
+  color: var(--text-color); /* Mengubah warna teks menjadi putih saat hover */
+}
+
+.aside p:nth-of-type(3) {
+  text-align: center;
+  color: #888;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index: 99999; /* selalu paling depan */
+}
+
+nav {
+  position: fixed; /* Navbar tetap */
+  right: 40px; /* Jarak dari kanan */
+  width: var(--nav-width); /* Menggunakan variabel lebar navbar */
+  padding: 1rem; /* Padding di dalam navbar */
+  border: 1px solid white;
+  z-index: var(--z-fixed);
+  transition: 0.4s;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column; /* Susun elemen navbar secara vertikal */
+  justify-content: center; /* Posisikan elemen secara vertikal di tengah */
+}
+
+/* Efek hover untuk navbar */
+/* Style untuk link di dalam navbar */
+nav a {
+  margin: 20px 5px;
+  text-decoration: none;
+  font-size: var(--normal-font-size); /* Menggunakan ukuran font dari :root */
+  color: var(--text-color); /* Menggunakan warna teks dari :root */
+  display: block;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--warna-utama);
+  filter: drop-shadow(0 0 6px rgba(0, 255, 153, 0.7));
+}
+
+nav a:hover::before {
+  box-shadow:
+    0 0 10px 5px rgba(0, 255, 153, 0.8),
+    0 0 30px 15px rgba(0, 255, 153, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+nav a.active i {
+  color: var(--warna-utama);
+  filter: drop-shadow(0 0 6px rgba(0, 255, 153, 0.7));
+}
+
+main {
+  padding: 25px 30px;
+  width: 900px;
+  margin-left: 400px;
+}
+
+.main-intro {
+  border: 1px solid #888;
+  color: var(--body-color);
+  display: inline-flex; /* Menggunakan inline-flex agar menyesuaikan dengan konten */
+  font-size: 15px;
+  gap: 10px; /* Jarak antar elemen di dalam flex container */
+  align-items: center; /* Menyelaraskan item secara vertikal */
+  padding: 10px; /* Padding untuk menambah ruang di dalam pembungkus */
+  border-radius: 30px; /* Membulatkan sudut */
+  margin: 0 0 30px; /* Margin bawah untuk jarak dengan elemen lain */
+}
+
+.one {
+  padding: 55px 0;
+}
+
+.two {
+  padding: 55px 0;
+  padding-right: 50px;
+}
+
+.tree {
+  padding: 55px 0;
+  padding-right: 100px;
+}
+
+.four {
+  padding-top: 55px;
+}
+
+.five {
+  padding: 55px 0;
+  /* padding-right: 100px; */
+}
+
+.six {
+  padding: 55px 0;
+  /* padding-right: 100px; */
+}
+
+.greeting {
+  font-size: 78px;
+  line-height: 90px;
+  margin: 0px 0px 30px;
+}
+
+.greeting span {
+  color: var(--warna-utama);
+}
+
+.greeting-about {
+  font-size: 48px;
+  line-height: 60px;
+  margin: 0px 0px 30px;
+}
+
+.greeting-about span {
+  color: var(--warna-utama);
+}
+
+.about-journey {
+  font-size: 18px;
+  width: 95%;
+  margin: 0px 0px 20px;
+  color: #999;
+}
+
+.about-exp {
+  display: flex;
+  /* padding: 0px 0px 0px 0px; */
+  justify-content: flex-start;
+  margin-bottom: 25px;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-right: 50px;
+}
+
+.experience p {
+  color: #999;
+}
+
+.about-exp p:nth-of-type(1) {
+  font-size: 72px;
+  color: var(--warna-utama);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: end;
+  margin-right: 40px;
+}
+
+.logo-container img {
+  position: absolute;
+  margin-top: 60px;
+  margin-right: 68px;
+}
+
+.rotating-text {
+  animation: rotate 10s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+text {
+  font-family: Arial, sans-serif;
+}
+
+.resume-wrapper {
+  --timeline-x: 20px;
+  position: relative;
+  padding-left: 30px;
+  padding-bottom: 25px;
+}
+
+/* HAPUS / MATIKAN GARIS BESAR */
+.resume-wrapper::before {
+  content: none; /* atau display:none; */
+}
+
+.resume-label {
+  font-size: 48px;
+  font-family: var(--body-font);
+  color: #ffffff;
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  display: block;
+  /* margin-top: 53px; */
+  margin-bottom: 6px;
+}
+
+.resume-meta {
+  font-size: 18px;
+  color: #cfcfcf;
+  margin: 4px 0;
+}
+
+.resume-title {
+  font-size: 28px;
+  /* font-weight: 700; */
+  margin-top: 25px;
+  color: #ffffff;
+}
+
+.resume-content {
+  padding-left: 10px;
+  margin: 4px 0;
+}
+
+.resume-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Item */
+.resume-item1 {
+  position: relative;
+  padding: 10px 0;
+  padding-bottom: 30px;
+}
+
+.resume-item1:hover .resume-marker {
+  border-color: var(--warna-utama);
+  /* transform: scale(1.2); */
+  transition: 0.3s ease;
+}
+
+/* Garis per item (pendek) */
+.resume-item1::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--timeline-x) - 49px);
+  top: 34px; /* sejajar bawah marker */
+  height: 400px; /* Sesuaikan tinggi garis sesuai kebutuhan */
+  width: 2px;
+  background: #2f2f2f;
+}
+
+.resume-item2 {
+  position: relative;
+  padding: 10px 0;
+  padding-bottom: 30px;
+}
+
+.resume-item2:hover .resume-marker {
+  border-color: var(--warna-utama);
+  /* transform: scale(1.2); */
+  transition: 0.3s ease;
+}
+
+/* Garis per item (pendek) */
+.resume-item2::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--timeline-x) - 49px);
+  top: 34px; /* sejajar bawah marker */
+  height: 240px;
+  width: 2px;
+  background: #2f2f2f;
+}
+
+.resume-item3 {
+  position: relative;
+  padding: 10px 0;
+  padding-bottom: 30px;
+}
+
+.resume-item3:hover .resume-marker {
+  border-color: var(--warna-utama);
+  /* transform: scale(1.2); */
+  transition: 0.3s ease;
+}
+
+/* Garis per item (pendek) */
+.resume-item3::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--timeline-x) - 49px);
+  top: 34px; /* sejajar bawah marker */
+  height: 111px;
+  width: 2px;
+  background: #2f2f2f;
+}
+
+.resume-item4 {
+  position: relative;
+  padding: 10px 0;
+  padding-bottom: 30px;
+}
+
+.resume-item4:hover .resume-marker {
+  border-color: var(--warna-utama);
+  /* transform: scale(1.2); */
+  transition: 0.3s ease;
+}
+
+/* Garis per item (pendek) */
+.resume-item4::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--timeline-x) - 49px);
+  top: 34px; /* sejajar bawah marker */
+  height: 115px;
+  width: 2px;
+  background: #2f2f2f;
+}
+
+.resume-marker {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #8a8a8a;
+  background: #111;
+  transform: translateX(-288%);
+}
+
+.skills-wrapper {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; /* Membuat item membungkus ke baris berikutnya jika tidak muat */
+  padding-bottom: 25px;
+}
+
+.skills-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 120px;
+  height: 120px;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #888;
+  border-radius: 12px;
+}
+
+.skills-item p {
+  font-size: 15px;
+  color: var(--text-color);
+}
+
+.skills-icon {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.skills-icon:hover {
+  transform: scale(1.1);
+}
+
+.portofolio-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-bottom: 25px;
+  gap: 20px;
+}
+
+.portofolio-list {
+  display: flex; /* ini wajib */
+  flex-direction: column; /* list vertikal */
+  align-items: center;
+  gap: 54px;
+}
+
+/* wrapper 1 item: gambar + teks */
+.porto-card {
+  width: min(700px, 90vw); /* responsif, batas max */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /*teks*/
+  gap: 12px;
+}
+
+/* area zoom */
+.porto-container {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* gambar */
+.portofolio-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  transform: scale(1);
+}
+
+/* hover: zoom gambar tapi frame tetap */
+.porto-card:hover .portofolio-item img {
+  transform: scale(1.08);
+}
+
+/* caption di luar animasi */
+.porto-caption {
+  margin: 0;
+  text-align: left;
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  line-height: 1.3;
+}
+
+.my-email {
+  color: white;
+  font-size: 28px;
+  font-family: 'poppins', sans-serif;
+  text-decoration: none;
+}
+
+.contact-form {
+  display: flex;
+  gap: 50px;
+  font-family: 'poppins', sans-serif;
+  color: white;
+  padding-right: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  /* padding-bottom: 55px;  */
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: transparent; /* hilangkan background putih */
+  border: none; /* hilangkan border default */
+  border-bottom: 1px solid #333; /* garis bawah saja */
+  color: #fff; /* warna text yang diketik */
+  padding: 10px 0;
+  outline: none; /* hilangkan outline biru */
+  font-size: 16px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #777; /* abu-abu seperti contoh */
+  opacity: 1; /* supaya tidak terlalu transparan */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-bottom: 1px solid #fff;
+}
+
+.contact-name {
+  display: flex;
+  flex-direction: column;
+  font-family: 'poppins', sans-serif;
+}
+
+.contact-email {
+  display: flex;
+  flex-direction: column;
+  font-family: 'poppins', sans-serif;
+}
+
+.contact-phone {
+  display: flex;
+  flex-direction: column;
+  font-family: 'poppins', sans-serif;
+}
+
+.subject-email {
+  display: flex;
+  flex-direction: column;
+  font-family: 'poppins', sans-serif;
+}
+
+.contact-message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 90px;
+  width: 96%;
+}
+
+.contact-message textarea {
+  min-height: 200px;
+  font-family: 'poppins', sans-serif;
+  resize: none;
+}
+
+.contact-me {
+  background-color: var(--warna-utama);
+  border: none;
+  border-radius: 50px;
+  padding: 19px 55px;
+  cursor: pointer;
+  /* margin-bottom: 30px; */
+  transition: background-color 0.3s ease;
+}
+
+.contact-me a {
+  text-decoration: none;
+  color: black; /* Warna teks default */
+  transition: color 0.3s ease; /* Menambahkan transisi pada warna teks */
+}
+
+.contact-me:hover {
+  background-color: #000000; /* Mengubah warna latar belakang saat hover */
+  outline: 2px solid white;
+  color: var(--text-color);
+  outline-offset: -2px;
+}
+
+
+/* responsive  */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    width: 100%; /* Kontainer penuh lebar layar */
+    border: none;
+    /* height: 20000px;  */
+  }
+
+  .wrapper {
+    position: fixed;
+    top: 50%;
+    left: 30px; /* jarak dari kiri */
+    transform: translateY(-50%);
+    z-index: 99999;
+  }
+
+  .side {
+    display: flex;
+    position: relative; /* Menghilangkan position: fixed */
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto; /* Biar ada margin otomatis atas dan bawah */
+    max-width: 100%; /* Penuhi layar saat kecil */
+    width: 90%; /* Lebar hampir penuh, tapi tidak menempel di pinggir */
+    left: 0;
+    top: 0;
+    height: auto;
+    padding: 20px;
+    border: 2px solid white; /* Misal ingin ada border */
+  }
+
+  nav {
+    background-color: #00000033;
+    backdrop-filter: blur(5px);
+    margin: 40px 0px;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 500px;
+    bottom: 0;
+    z-index: 999;
+  }
+
+  main {
+    margin: 0;
+    width: 100%; /* Penuh lebar layar */
+    padding: 20px; /* Menambahkan padding agar tidak terlalu mepet */
+  }
+}
